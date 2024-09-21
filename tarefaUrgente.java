@@ -1,9 +1,9 @@
-public class TarefaUrgente extends Tarefa {
+public class TarefaUrgente extends Tarefa implements Notificacao {
     private String razaoUrgencia;
 
     // Construtor da Tarefa Urgente
     public TarefaUrgente(String titulo, String descricao, String prazo, String razaoUrgencia) {
-        super(titulo, descricao, prazo, 5);  // new Tarefa()
+        super(titulo, descricao, prazo, 5);  // Define prioridade 5 como padrão para tarefas urgentes
         this.razaoUrgencia = razaoUrgencia;
     }
 
@@ -16,10 +16,14 @@ public class TarefaUrgente extends Tarefa {
         this.razaoUrgencia = razaoUrgencia;
     }
 
-    // Sobreescrevendo o método exibirDetalhes()
     @Override
     public void exibirDetalhes() {
         super.exibirDetalhes();
         System.out.println("Razão da Urgência: " + this.razaoUrgencia);
+    }
+
+    @Override
+    public void enviarNotificacao() {
+        System.out.println("Notificação: A tarefa '" + getTitulo() + "' é URGENTE! Razão: " + this.razaoUrgencia);
     }
 }
